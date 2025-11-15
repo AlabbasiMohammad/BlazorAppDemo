@@ -1,4 +1,5 @@
 using BlazorAppDemo.Components;
+using BlazorAppDemo.Components.Services;
 using Microsoft.FluentUI.AspNetCore.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,9 @@ builder.Services.AddRazorComponents()
 
 
 builder.Services.AddFluentUIComponents();
+
+builder.Services.AddSingleton<ProductService>();
+
 
 var app = builder.Build();
 
