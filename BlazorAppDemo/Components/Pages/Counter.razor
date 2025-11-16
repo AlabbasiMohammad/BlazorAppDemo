@@ -36,6 +36,12 @@
 </div>
 
 
+<div class="mt-4" style="border: 1px solid #ccc; padding: 10px;">
+    <input placeholder="insert text here..." type="text" @onkeydown="HandelKey" />
+    <p class="text-muted">@keyText</p>
+</div>
+
+
 
 
 
@@ -47,6 +53,13 @@
     private string? mouseOverText;
 
     private string? focusText;
+
+    private string? keyText;
+
+    private void HandelKey(KeyboardEventArgs args)
+    {
+        keyText = $"You pressed the '{args.Key}' key.";
+    }
 
     private void IncrementCount()
     {
