@@ -9,11 +9,63 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+
+
+<div class="mt-4">
+    <input @oninput="HandlerInput" placeholder="Type something..." />
+    <p>You typed: @inputText</p>
+</div>
+
+
+<div class="mt-4">
+    <a href="/">Back to Home</a>
+</div>
+
+<div class="mt-4">
+    <a href="/fetchdata">Go to Fetch Data page</a>
+</div>
+
+<div class="mt-4" @onmouseover="HandlerMouseOver" style="border: 1px solid #ccc; padding: 10px;">
+    <p class="text-muted">@mouseOverText</p>
+</div>
+
+
+<div class="mt-4"  style="border: 1px solid #ccc; padding: 10px;">
+    <input placeholder="Focus on me..." @onfocus="HandlerFocus" @onblur="HandlerBlur"/>
+    <p class="text-muted">@focusText</p>
+</div>
+
+
+
+
+
 @code {
     private int currentCount = 0;
+
+    private string? inputText;
+
+    private string? mouseOverText;
+
+    private string? focusText;
 
     private void IncrementCount()
     {
         currentCount++;
+    }
+    private void HandlerInput(ChangeEventArgs args)
+    {
+        inputText = args.Value?.ToString();
+    }
+    private void HandlerMouseOver(MouseEventArgs args)
+    {
+        mouseOverText = "You moved the mouse over this div at " + DateTime.Now.ToLongTimeString();
+    }
+    private void HandlerFocus(FocusEventArgs args)
+    {
+        focusText = "You are typing.... ";
+    }
+    private void HandlerBlur(FocusEventArgs args)
+    {
+        focusText = "You left the input box.";
     }
 }

@@ -10,7 +10,7 @@ builder.Services.AddRazorComponents()
 
 
 
-builder.Services.AddFluentUIComponents();
+builder.Services.AddFluentUIComponents();   
 
 builder.Services.AddSingleton<ProductService>();
 
