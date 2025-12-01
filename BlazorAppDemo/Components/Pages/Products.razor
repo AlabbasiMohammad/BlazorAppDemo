@@ -3,7 +3,7 @@
 @using BlazorAppDemo.Components.Services
 @inject ProductService ProductService
 @inject NavigationManager NavigationManager
-
+@rendermode InteractiveServer
 <h3>Products</h3>
 
 <button class="btn btn-primary" @onclick="CreateNew">Add Product</button>
@@ -39,11 +39,24 @@
     protected override void OnInitialized()
     {
         products = ProductService.GetAll();
+        Console.WriteLine("OnInitialized");
+
     }
+    protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine("OnInitializedAsync");
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        Console.WriteLine("AfterRender: " + firstRender);
+    }
+
+
 
     void CreateNew() => NavigationManager.NavigateTo("/product-form");
 
-    void Edit(int id) => NavigationManager.NavigateTo($"/product-form/{id}");
+    // void Edit(int id) => NavigationManager.NavigateTo($"/product-form/{id}");
+    void Edit(int id) => NavigationManager.NavigateTo($"/product-form");
 
     void Delete(int id)
     {

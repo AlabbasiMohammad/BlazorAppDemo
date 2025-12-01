@@ -1,0 +1,108 @@
+// {
+//   "version": "2.0.0",
+//   "tasks": [
+//     {
+//       "label": "build",
+//       "command": "dotnet",
+//       "type": "process",
+//       "args": [
+//         "build",
+//         "${workspaceFolder}/BlazorAppDemo/BlazorAppDemo.csproj"
+//       ],
+//       "problemMatcher": "$msCompile"
+//     }
+//   ]
+// }
+
+
+// {
+//   "version": "2.0.0",
+//   "tasks": [
+//     {
+//       "label": "build",
+//       "type": "process",
+//       "command": "dotnet",
+//       "args": [
+//         "build",
+//         "${workspaceFolder}/${workspaceFolderBasename}.csproj",
+//         "/property:GenerateFullPaths=true",
+//         "/consoleloggerparameters:NoSummary"
+//       ],
+//       "problemMatcher": "$msCompile",
+//       "group": {
+//         "kind": "build",
+//         "isDefault": true
+//       }
+//     }
+//   ]
+// }
+
+// {
+//   "version": "2.0.0",
+//   "tasks": [
+//     {
+//       "label": "build",
+//       "type": "process",
+//       "command": "dotnet",
+//       "args": [
+//         "build",
+//         "${workspaceFolder}\\${workspaceFolderBasename}\\BlazorAppDemo.csproj",
+//         "/property:GenerateFullPaths=true",
+//         "/consoleloggerparameters:NoSummary"
+//       ],
+//       "problemMatcher": "$msCompile",
+//       "group": {
+//         "kind": "build",
+//         "isDefault": true
+//       }
+//     }
+//   ]
+// }
+
+
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}\\${workspaceFolderBasename}\\BlazorAppDemo.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "watch",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["watch", "run", "--project", "${workspaceFolder}\\${workspaceFolderBasename}\\${workspaceFolderBasename}.csproj"],
+      "cwd": "${workspaceFolder}\\${workspaceFolderBasename}",
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^.*$",
+          "file": 1,
+          "location": 2,
+          "message": 3
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^watch :",
+          "endsPattern": "^Now listening on:"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    }
+  ]
+}

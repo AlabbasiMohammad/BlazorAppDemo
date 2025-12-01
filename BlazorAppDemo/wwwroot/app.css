@@ -58,3 +58,23 @@ h1:focus {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
     text-align: start;
 }
+
+
+.card {
+    border: 1px solid var(--neutral-stroke-rest);
+    border-radius: var(--control-corner-radius);
+    padding: calc(var(--design-unit) * 2px);
+    background-color: var(--neutral-layer-1);
+    box-shadow: var(--elevation-shadow-card-rest);
+}
+
+
+.footer-minimal {
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: var(--neutral-foreground-rest);
+    border-top: 1px solid var(--neutral-stroke-rest);
+}

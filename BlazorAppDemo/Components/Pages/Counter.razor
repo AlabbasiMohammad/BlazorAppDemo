@@ -1,9 +1,11 @@
 ﻿@page "/counter"
 @rendermode InteractiveServer
+@using Microsoft.FluentUI.AspNetCore.Components
+@using BlazorAppDemo.Components.Models
 
 <PageTitle>Counter</PageTitle>
 
-<h1>Counter</h1>
+<h1>Counter from hot reload 8.</h1>
 
 <p role="status">Current count: @currentCount</p>
 
@@ -41,11 +43,162 @@
     <p class="text-muted">@keyText</p>
 </div>
 
+<div class="mt-4">
+    <input type="text" @bind="text_bind" @bind:event="oninput" @bind:after="Search"/>
+    <p>You typed for binding : @text_bind</p>
+    <p class="text-muted">search:  @inputText_after</p>
+</div>
+
+
+<FluentStack Orientation="Orientation.Horizontal" Gap="8px" HorizontalAlignment="HorizontalAlignment.Stretch">
+    <FluentButton Type="ButtonType.Submit" Appearance="Appearance.Accent">Save</FluentButton>
+    <FluentButton Type="ButtonType.Button"  Appearance="Appearance.Accent" IconStart="@(new Icons.Regular.Size16.Add())">New</FluentButton>
+    <FluentButton Type="ButtonType.Button" Appearance="Appearance.Accent">Reset</FluentButton>
+    <FluentButton Type="ButtonType.Button" Appearance="Appearance.Accent">Create Customer</FluentButton>
+</FluentStack>
+
+
+
+<FluentStack Orientation="Orientation.Vertical" VerticalAlignment="VerticalAlignment.Stretch"  HorizontalAlignment="HorizontalAlignment.Stretch">
+
+    
+
+    <FluentStack Orientation="Orientation.Vertical" VerticalAlignment="VerticalAlignment.Center" HorizontalAlignment="HorizontalAlignment.Stretch" Class="card">
+        <FluentButton>Name</FluentButton>
+        <FluentTextField Name="Name to stretch" Style="font-weight:bold" Label="Name To Stretch" Class="textfield-lg" Required />
+    </FluentStack>
+
+    <div>
+        <FluentTextField Name="Name" Style="font-weight:bold"  Label="Name" Class="textfield-lg" Required />
+        @* <FluentValidationMessage  For="@AbandonedMutexException"/> *@
+    </div>
+    <div>
+        <FluentTextField Name="Email"  Label="Email" Class="textfield-lg" Required />
+        @* <FluentValidationMessage For="@(() => "Validation message.")" /> *@
+    </div>
+@*     <div>
+        <FluentTextField Name="Company" @bind-Value="request.Company" Label="Company" Class="textfield-lg" />
+        <FluentValidationMessage For="@(() => request.Company)" />
+    </div>
+    <div>
+        <FluentTextArea Name="Comment" Rows=5 Cols=60 @bind-Value="request.CustomerComment" Label="Comment (optional)" />
+        <FluentValidationMessage For="@(() => request.CustomerComment)" />
+    </div>
+
+    <div>
+        <FluentTextField Name="TenantId" @bind-Value="request.TenantId" Label="TenantId" Class="textfield-lg" />
+        <FluentValidationMessage For="@(() => request.TenantId)" />
+    </div>
+
+    <div>
+        <FluentTextField Name="DefaultDomain" @bind-Value="request.DefaultDomain" Label="DefaultDomain" Class="textfield-lg" />
+        <FluentValidationMessage For="@(() => request.DefaultDomain)" />
+    </div>
+
+    <div>
+        <FluentTextField Name="RequestedIp" @bind-Value="request.RequestedIp" Label="RequestedIp" Class="textfield-lg" Disabled />
+        <FluentValidationMessage For="@(() => request.RequestedIp)" />
+    </div>
+
+    <div>
+        <FluentCheckbox Name="Trial Requested" @bind-Value="request.TrialRequested" Label="Trial Requested" />
+        <FluentValidationMessage For="@(() => request.TrialRequested)" />
+    </div>
+
+    <div>
+        <FluentCheckbox Name="Completed" @bind-Value="request.Completed" Label="Completed" Disabled />
+        <FluentValidationMessage For="@(() => request.Completed)" />
+    </div> *@
+
+
+
+
+</FluentStack>
+
+
+
+@*         <FluentStack Style="margin-bottom: 24px;" VerticalAlignment="VerticalAlignment.Center">
+            <FluentLabel>Justify</FluentLabel>
+            <FluentSelect Items=@(Enum.GetValues<JustifyContent>())
+                          OptionValue="@(c => c.ToAttributeValue())"
+                          TOption="JustifyContent"
+                          Position="SelectPosition.Below"
+                          @bind-SelectedOption="@Justification" />
+
+            <FluentLabel>Spacing</FluentLabel>
+            <FluentSlider @bind-Value="@Spacing" Min="0" Max="10" Step="1" Style="max-width: 300px; margin-top: 18px;" />
+        </FluentStack> *@
+
+        <FluentGrid Spacing="5" Justify="JustifyContent.FlexStart" OnBreakpointEnter="@OnBreakpointEnterHandler" AdaptiveRendering="true" Style="background-color: var(--neutral-layer-3); padding: 4px; ">
+            <FluentGridItem xs="12">
+                <div class="card">
+                    xs="12"
+                </div>
+            </FluentGridItem>
+            <FluentGridItem xs="12" sm="6" HiddenWhen="GridItemHidden.SmAndDown">
+                <div class="card">
+                    xs="12" sm="6" Hidden="SmAndDown"
+                </div>
+            </FluentGridItem>
+            <FluentGridItem xs="12" sm="6">
+                <div class="card">
+                    xs="12" sm="6"
+                </div>
+            </FluentGridItem>
+            <FluentGridItem xs="6" sm="3">
+                <div class="card">
+                    xs="6" sm="3"
+                </div>
+            </FluentGridItem>
+            <FluentGridItem xs="6" sm="3">
+                <div class="card">
+                    xs="6" sm="3"
+                </div>
+            </FluentGridItem>
+            <FluentGridItem xs="6" sm="3">
+                <div class="card">
+                    xs="6" sm="3"
+                </div>
+            </FluentGridItem>
+            <FluentGridItem xs="6" sm="3">
+                <div class="card">
+                    xs="6" sm="3"
+                </div>
+            </FluentGridItem>
+            <FluentGridItem xs="3">
+                <div class="card">
+                    xs="3"
+                </div>
+            </FluentGridItem>
+        </FluentGrid>
+
+
+
+
+
+
+<FluentTextField 
+                 Label="Outline"
+                 Appearance="FluentInputAppearance.Outline" />
+
+<FluentTextField 
+                 Label="Filled"
+                 Appearance="FluentInputAppearance.Filled" />
+
+
+
 
 
 
 
 @code {
+
+
+
+    // [SupplyParameterFromForm]
+    // private Request? request { get; set; }
+
+
     private int currentCount = 0;
 
     private string? inputText;
@@ -55,6 +208,23 @@
     private string? focusText;
 
     private string? keyText;
+    private string? text_bind;
+
+    private string? inputText_after;
+
+    JustifyContent Justification = JustifyContent.FlexStart;
+    int Spacing = 3;
+
+    void OnBreakpointEnterHandler(GridItemSize size)
+    {
+        // DemoLogger.WriteLine($"Page Size: {size}");
+    }
+
+
+    protected override void OnInitialized()
+    {
+        // request = new Request();
+    }
 
     private void HandelKey(KeyboardEventArgs args)
     {
@@ -80,5 +250,11 @@
     private void HandlerBlur(FocusEventArgs args)
     {
         focusText = "You left the input box.";
+    }
+    private async Task Search()
+    {
+        // Simulate a search operation
+        await Task.Delay(500); // Simulate some delay
+        inputText_after = $"Search completed at {DateTime.Now.ToLongTimeString()} for '{text_bind}'";
     }
 }

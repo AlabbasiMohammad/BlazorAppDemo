@@ -6,7 +6,7 @@
 <FluentDesignTheme StorageName="theme" />
 
 
-<p>Alignment of the Stack content elements:</p>
+@* <p>Alignment of the Stack content elements:</p>
 <FluentStack>
     <div style="width: 150px;">
         Horizontal<FluentListbox Items=@(Enum.GetValues<HorizontalAlignment>()) @bind-SelectedOption="@Horizontal" />
@@ -52,10 +52,10 @@
     HorizontalAlignment Horizontal;
     VerticalAlignment Vertical;
     bool Reversed;
-}
+} *@
 
 
-<FluentLayout>
+@* <FluentLayout>
     <FluentHeader>
         BlazorWeb-CSharp - form fluent.
         <FluentIcon Value="@(new Icons.Regular.Size24.Settings())"
@@ -77,9 +77,9 @@
         <FluentSpacer />
         <a href="https://learn.microsoft.com/en-us/aspnet/core/blazor" target="_blank">About Blazor</a>
     </FluentFooter>
-</FluentLayout>
+</FluentLayout> *@
 
-<FluentDialogProvider/>
+@* <FluentDialogProvider/> *@
 
 <div class="page">
     <div class="sidebar">
@@ -94,7 +94,15 @@
         <article class="content px-4">
             @Body
         </article>
+
+        <footer class="footer-minimal">
+            <span>© @DateTime.Now.Year Delegate365 Backoffice</span>
+            <FluentDivider />
+            <span>Powered by Fluent UI Blazor</span>
+        </footer>
     </main>
+
+
 </div>
 
 <div id="blazor-error-ui" data-nosnippet>
