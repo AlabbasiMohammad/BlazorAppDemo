@@ -4,6 +4,10 @@ using Microsoft.FluentUI.AspNetCore.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
@@ -16,6 +20,18 @@ builder.Services.AddSingleton<ProductService>();
 
 
 var app = builder.Build();
+
+
+var supportedCultures = new[] { "en-US", "ar-SA" };
+var localizationOptions = new RequestLocalizationOptions()
+    .SetDefaultCulture(supportedCultures[0])
+    .AddSupportedCultures(supportedCultures)
+    .AddSupportedUICultures(supportedCultures);
+
+app.UseRequestLocalization(localizationOptions);
+
+app.MapBlazorHub();
+app.MapFallbackToPage("/_Host");
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

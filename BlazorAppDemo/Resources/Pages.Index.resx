@@ -1,0 +1,6 @@
+﻿namespace BlazorAppDemo.Resources
+{
+    public class Pages
+    {
+    }
+}
